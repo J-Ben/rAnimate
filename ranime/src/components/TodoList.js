@@ -1,5 +1,3 @@
-import React from 'react'
-import {ReactCSSTransitionGroup} from 'react-transition-group'; // ES6
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -41,5 +39,3 @@ class TodoList extends React.Component {
       );
     }
   }
-
-  export default TodoList;

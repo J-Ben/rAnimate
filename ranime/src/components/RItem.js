@@ -2,16 +2,21 @@ import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { Badge } from 'react-bootstrap'
 import { Form } from 'react-bootstrap'
-import { Dropdown } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Dropdown } from 'react-bootstrap'  
 
-function RListItem({ task }) {
+
+
+function RItem({task, handleDelItemMeth}) {
+    
+    const handlDelItem = () => {
+        handleDelItemMeth(task)
+    }
     return (
         <>
 
             <ListGroup.Item
                 as="li"
-                className="d-flex justify-content-between align-items-start"
+                className="slide-in-elliptic-top-fwd d-flex justify-content-between align-items-start"
             >
                 <div className="ms-2 me-auto">
 
@@ -29,7 +34,11 @@ function RListItem({ task }) {
 
                         <Dropdown.Menu>
                             <Dropdown.Item href="#/action-2">Modifier</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Supprimer</Dropdown.Item>
+                            <Dropdown.Item 
+                            onClick={handlDelItem}
+                            >
+                            Supprimer
+                            </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Badge>
@@ -38,4 +47,4 @@ function RListItem({ task }) {
     )
 }
 
-export default RListItem
+export default RItem
