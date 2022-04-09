@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import { Row } from 'react-bootstrap'
 import { ListGroup } from 'react-bootstrap'
 import { Form } from 'react-bootstrap'
+import { FloatingLabel } from 'react-bootstrap'
 import { Container } from 'react-bootstrap'
 import RItem from './components/RItem'  
 
@@ -35,11 +36,13 @@ function App() {
 
 
   const listItems = items.map(
-    (item,i) => <RItem className="slide-in-elliptic-top-fwd" key={i} task={item} handleDelItemMeth={delItem} /> 
+    (item,i) => <RItem className="slide-in-elliptic-top-fwd"
+                      key={i} task={item}
+                      remove={delItem} /> 
   );
 
-  const delItem = (item) => {
-    items.filter(i => i != item)
+  function delItem(itemP) {
+    setItems(items.filter(i => i != itemP));
   }  
   
 
@@ -50,7 +53,7 @@ function App() {
           <Form onSubmit={addItems}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ma todoYiste</Form.Label>
-              <>
+              
                 <FloatingLabel
                   controlId="floatingInput"
                   label="Saisissez une tâche et appuyez 'Entrer'"
@@ -65,13 +68,13 @@ function App() {
                     value={item}
                   />
                 </FloatingLabel>
-              </>
+              
               <Form.Text className="text-muted">
 
                 <i>Une tâche ne s'entâche que si l'on paresse</i>
               </Form.Text>
             </Form.Group>
-          </>
+          </Form>
         </Row>
         <Row className="mx-0">
           <ListGroup as="ol">

@@ -6,14 +6,13 @@ import { Dropdown } from 'react-bootstrap'
 
 
 
-function RItem({task, handleDelItemMeth}) {
+function RItem({task, remove}) {
     
-    const handlDelItem = () => {
-        handleDelItemMeth(task)
+    const handlDelItem = (e) => {
+        remove(e.target.id)
     }
+    
     return (
-        <>
-
             <ListGroup.Item
                 as="li"
                 className="slide-in-elliptic-top-fwd d-flex justify-content-between align-items-start"
@@ -24,7 +23,7 @@ function RItem({task, handleDelItemMeth}) {
                         <Form.Check type="switch" id="custom-switch" label={task} />
                     </div>
                 </div>
-
+               
                 <Badge bg="" pill>
 
                     <Dropdown>
@@ -36,6 +35,7 @@ function RItem({task, handleDelItemMeth}) {
                             <Dropdown.Item href="#/action-2">Modifier</Dropdown.Item>
                             <Dropdown.Item 
                             onClick={handlDelItem}
+                            id={task}
                             >
                             Supprimer
                             </Dropdown.Item>
@@ -43,7 +43,6 @@ function RItem({task, handleDelItemMeth}) {
                     </Dropdown>
                 </Badge>
             </ListGroup.Item>
-        </>
     )
 }
 
