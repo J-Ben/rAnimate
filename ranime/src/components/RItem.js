@@ -6,12 +6,16 @@ import { Dropdown } from 'react-bootstrap'
 
 
 
-function RItem({task, remove}) {
+function RItem({task, remove, update}) {
     
     const handlDelItem = (e) => {
         remove(e.target.id)
     }
-    
+
+    const handleModifItem = (e) => {
+        update(e.target.id)
+    }
+
     return (
             <ListGroup.Item
                 as="li"
@@ -32,7 +36,10 @@ function RItem({task, remove}) {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-2">Modifier</Dropdown.Item>
+                            <Dropdown.Item
+                            onClick={handleModifItem}
+                            id={task}
+                            >Modifier</Dropdown.Item>
                             <Dropdown.Item 
                             onClick={handlDelItem}
                             id={task}

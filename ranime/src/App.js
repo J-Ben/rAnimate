@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import logo from './logo.svg';
-import { Button } from 'react-bootstrap'
+import React, { useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { ListGroup } from 'react-bootstrap'
 import { Form } from 'react-bootstrap'
@@ -29,8 +27,14 @@ function App() {
       alert("Entrez une tâche valide")
     }
     else {
-      setItems([...items, item])
-      setItem("")
+      // check if task exist
+      const verif = items.includes(item);
+      if(!verif) {
+        setItems([...items, item])
+        setItem("")
+      } else {
+        alert("Cette tache existe déjà")
+      }
     }
   }
 
@@ -38,12 +42,26 @@ function App() {
   const listItems = items.map(
     (item,i) => <RItem className="slide-in-elliptic-top-fwd"
                       key={i} task={item}
-                      remove={delItem} /> 
+                      remove={delItem}
+                      update={updateItem}
+                      /> 
   );
 
   function delItem(itemP) {
-    setItems(items.filter(i => i != itemP));
+    setItems(items.filter(i => i !== itemP));
   }  
+
+  function updateItem(itemSelected) {
+    console.log(itemSelected);
+    const updatedItem = items.map(item => {
+      if(item === itemSelected) {
+        return itemSelected+'gggg'
+      }
+      return item
+    })
+    
+    setItems(updatedItem)
+  }
   
 
   return (
