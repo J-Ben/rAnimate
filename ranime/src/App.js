@@ -14,6 +14,7 @@ function App() {
 
   const [item, setItem] = useState("");
   const [items, setItems] = useState([]);
+  
 
   /**
    * Ajout d'un item
@@ -47,17 +48,22 @@ function App() {
                       /> 
   );
 
+
+  
+
   function delItem(itemP) {
     setItems(items.filter(i => i !== itemP));
   }  
 
-  function updateItem(itemSelected) {
+
+  function updateItem(oldTask, itemSelected) {
+    console.log(oldTask);
     console.log(itemSelected);
-    const updatedItem = items.map(item => {
-      if(item === itemSelected) {
-        return itemSelected+'gggg'
+    const updatedItem = items.map(itemL => {
+      if(itemL === oldTask) {
+        return itemSelected;
       }
-      return item
+      return itemL
     })
     
     setItems(updatedItem)
@@ -71,8 +77,7 @@ function App() {
           <Form onSubmit={addItems}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ma todoYiste</Form.Label>
-              
-                <FloatingLabel
+              { <FloatingLabel
                   controlId="floatingInput"
                   label="Saisissez une tâche et appuyez 'Entrer'"
                   className="mb-3"
@@ -85,7 +90,8 @@ function App() {
                     onChange={e => setItem(e.target.value)}
                     value={item}
                   />
-                </FloatingLabel>
+                </FloatingLabel>  } 
+                
               
               <Form.Text className="text-muted">
 

@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { Badge } from 'react-bootstrap'
 import { Form } from 'react-bootstrap'
 import { Dropdown } from 'react-bootstrap'  
-
+import { FloatingLabel } from 'react-bootstrap'
 
 
 function RItem({task, remove, update}) {
     
+    const [modif, setModif] = useState(task)
+    const [isEditing, setIsEditing] = useState(false);
+
     const handlDelItem = (e) => {
         remove(e.target.id)
     }
 
-    const handleModifItem = (e) => {
-        update(e.target.id)
+    const changeView = () => {
+        setIsEditing(!isEditing)
     }
+
+    const handleUpdate = evt => {
+        evt.preventDefault();
+        update(task, modif)
+        setIsEditing(!isEditing)
+      };
 
     return (
             <ListGroup.Item
@@ -24,7 +33,22 @@ function RItem({task, remove, update}) {
                 <div className="ms-2 me-auto">
 
                     <div className="fw-bold">
-                        <Form.Check type="switch" id="custom-switch" label={task} />
+                      {(!isEditing) ?  <Form.Check type="switch" id="custom-switch" label={task} />
+                                : <Form onSubmit={handleUpdate}><FloatingLabel
+                  controlId="floatingModif"
+                  
+                  className="mb-3"
+
+                // onKeyDown={addItems()}
+                >
+                  <Form.Control
+                    type="text"
+                    onChange={e => setModif(e.target.value)}
+                    value={modif}
+                  />
+                </FloatingLabel></Form> }
+
+                        
                     </div>
                 </div>
                
@@ -37,7 +61,7 @@ function RItem({task, remove, update}) {
 
                         <Dropdown.Menu>
                             <Dropdown.Item
-                            onClick={handleModifItem}
+                            onClick={changeView}
                             id={task}
                             >Modifier</Dropdown.Item>
                             <Dropdown.Item 
