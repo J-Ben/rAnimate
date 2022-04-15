@@ -54,3 +54,7 @@
  .barre label{
     text-decoration: line-through;  
  }
+
+ .back{
+     z-index: -1;
+ }
