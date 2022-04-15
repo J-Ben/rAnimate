@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { ListGroup } from "react-bootstrap";
-import { Badge } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { Dropdown } from "react-bootstrap";
-import { FloatingLabel } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap"; 
+import { Form } from "react-bootstrap"; 
+import { Button } from "react-bootstrap";
+import { FloatingLabel } from "react-bootstrap"; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
+import { faTrashAlt, faRegEdit } from '@fortawesome/free-solid-svg-icons'
+
+ 
 
 function RItem({ task, remove, update }) {
   const [modif, setModif] = useState(task);
-  const [isEditing, setIsEditing] = useState(false); 
+  const [isEditing, setIsEditing] = useState(false);
 
   const handlDelItem = (e) => {
     /**
@@ -20,13 +23,15 @@ function RItem({ task, remove, update }) {
     setTimeout(function() {
       remove(e.target.id);
     }, 1000);
-  }
+  };
 
-  const handlCheckItem = (e) => {  
+  const handlCheckItem = (e) => {
     /**
      * On ajoute la classe d'animation swing
      */
-    e.target.checked ? e.target.closest("li").classList.add("barre") : e.target.closest("li").classList.remove("barre");
+    e.target.checked
+      ? e.target.closest("li").classList.add("barre")
+      : e.target.closest("li").classList.remove("barre");
     /**
      * On retard la suppression de l'element le temps de l'animation
      */
@@ -35,32 +40,28 @@ function RItem({ task, remove, update }) {
     }, 1000);
   };
 
-  const changeView = () => { 
-    setIsEditing(!isEditing); 
+  const changeView = () => {
+    setIsEditing(!isEditing);
   };
 
   const handleUpdate = (e) => {
     e.preventDefault();
     /**
-     * On ajoute la classe d'animation jello 
+     * On ajoute la classe d'animation jello
      */
-    let li =  e.target.closest("li");
+    let li = e.target.closest("li");
     li.classList.add("jello-horizontal");
     /**
      * On retard la suppression de l'element le temps de l'animation
      */
-    ;
     setIsEditing(!isEditing);
     setTimeout(function() {
-        update(task, modif)
-      }, 1000);
+      update(task, modif);
+    }, 1000);
     //   li.classList.remove("jello-horizontal");
-
-    
   };
 
   return (
-      
     <ListGroup.Item
       as="li"
       className="slide-in-elliptic-top-fwd d-flex justify-content-between align-items-start"
@@ -68,7 +69,12 @@ function RItem({ task, remove, update }) {
       <div className="ms-2 me-auto">
         <div className="fw-bold">
           {!isEditing ? (
-            <Form.Check type="switch" id="custom-switch" onChange={handlCheckItem} label={task} />
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              onChange={handlCheckItem}
+              label={task}
+            />
           ) : (
             <Form onSubmit={handleUpdate}>
               <FloatingLabel
@@ -87,21 +93,12 @@ function RItem({ task, remove, update }) {
           )}
         </div>
       </div>
-
-      <Badge bg="" pill>
-        <Dropdown>
-          <Dropdown.Toggle variant="" id="dropdown-basic"></Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={changeView} id={task}>
-              Modifier
-            </Dropdown.Item>
-            <Dropdown.Item onClick={handlDelItem} id={task}>
-              Supprimer
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Badge>
+      <>
+        <hr/>
+        <Button variant="outline-primary" onClick={changeView} id={task}>Modifier <FontAwesomeIcon icon={faRegEdit} /></Button>
+        <Button variant="outline-secondary" onClick={handlDelItem} id={task}>Supprimer<FontAwesomeIcon icon={faTrashAlt} /></Button>
+      </>
+       
     </ListGroup.Item>
   );
 }

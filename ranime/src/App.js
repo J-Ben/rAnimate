@@ -3,8 +3,7 @@ import { Row } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { FloatingLabel } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Container } from "react-bootstrap"; 
 import RItem from "./components/RItem";
 import AlertModal from "./components/AlertModal";
 
@@ -23,7 +22,7 @@ function App() {
 
   /**
    * Message d'alert
-   */
+   */ 
   const alertme = (title, textTitle, text) => {
     setTitle(title)
     setTextTitle(textTitle)
