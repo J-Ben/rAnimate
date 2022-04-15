@@ -5,8 +5,7 @@ Le but de ce projet est de mettre en oeuvre les notions apprises au cours de Ful
 Le groupe est composé de : 
 -   Marlyse HM
 -   Ben-Jamin MK
--   Landry MK
--   Ilyes B.
+-   Landry MK 
 ## Available Scripts
 
 Dans le répertoire du projet, vous pouvez exécuter :

@@ -12,10 +12,10 @@ import "./style/Ranime.css";
 
 function App() {
   const [item, setItem] = useState("");
-  const [items, setItems] = useState(["un", "deux", "trois"]);
+  const [items, setItems] = useState([]);
 
   const [title, setTitle] = useState("");
-  const [textTitle, setTextTitle] = useState("");
+  const [textTitle, setTextTitle] = useState(""); 
   const [text, setText] = useState("");
   // Modale useState
   const [modalShow, setModalShow] = useState(false);

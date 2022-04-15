@@ -6,7 +6,6 @@ import { FloatingLabel } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
- 
 
 function RItem({ task, remove, update }) {
   const [modif, setModif] = useState(task);
