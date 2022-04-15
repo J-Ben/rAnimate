@@ -76,7 +76,7 @@ function App() {
         <Row className="mx-0">
           <Form onSubmit={addItems}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Ma todoYiste</Form.Label>
+              <Form.Label data-testid="titre">Ma todo Liste</Form.Label>
               { <FloatingLabel
                   controlId="floatingInput"
                   label="Saisissez une tâche et appuyez 'Entrer'"
@@ -86,9 +86,10 @@ function App() {
                 >
                   <Form.Control
                     type="text"
-                    placeholder="name@example.com"
+                    placeholder=""
                     onChange={e => setItem(e.target.value)}
                     value={item}
+                    data-testid="floatingInput"
                   />
                 </FloatingLabel>  } 
                 
