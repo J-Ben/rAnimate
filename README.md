@@ -91,4 +91,5 @@ RAnimate - Ranime
 - [@J-Ben](https://github.com/J-Ben)
 - [@Marlyse22](https://github.com/Marlyse22)
 - [@landofcodemonster](https://github.com/landofcodemonster)
+- [@ilyes98](https://github.com/ilyes98)
 
