@@ -36,8 +36,7 @@ function App() {
 
   const addItems = (e) => {
     e.preventDefault();
-    if (item === "") {
-      alert("Entrez une tâche f valide");
+    if (item === "") { 
       alertme("Attention !","Tâche vide", "Vous devez entrer une tâche avec du joli texte :-) ")
       setModalShow(true);
     } else {
@@ -61,7 +60,6 @@ function App() {
       task={item}
       remove={delItem}
       update={updateItem}
-      
     />
   ));
 
@@ -88,8 +86,9 @@ function App() {
         <Row className="mx-0 color-change-5x">
           <Form onSubmit={addItems}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label data-testid="titre">Ma todo Liste</Form.Label>
-              { <FloatingLabel
+              <Form.Label> Ma todoYiste </Form.Label>
+              {
+                <FloatingLabel
                   controlId="floatingInput"
                   label="Saisissez une tâche et appuyez 'Entrer'"
                   className="mb-3"
@@ -98,10 +97,9 @@ function App() {
                 >
                   <Form.Control
                     type="text"
-                    placeholder=""
-                    onChange={e => setItem(e.target.value)}
+                    placeholder="name@example.com"
+                    onChange={(e) => setItem(e.target.value)}
                     value={item}
-                    data-testid="floatingInput"
                   />
                 </FloatingLabel>
               }
@@ -114,8 +112,7 @@ function App() {
       </Container>
       <Container fluid>
         <Row className="mx-0">
-       
-          <ListGroup as="ol" data-testid="todosList"> {listItems} </ListGroup>
+          <ListGroup as="ol"> {listItems} </ListGroup>
         </Row>
         <Row className="mx-0"> </Row>
       </Container>
