@@ -36,8 +36,7 @@ function App() {
 
   const addItems = (e) => {
     e.preventDefault();
-    if (item === "") {
-      alert("Entrez une tâche f valide");
+    if (item === "") { 
       alertme("Attention !","Tâche vide", "Vous devez entrer une tâche avec du joli texte :-) ")
       setModalShow(true);
     } else {
@@ -113,7 +112,6 @@ function App() {
       </Container>
       <Container fluid>
         <Row className="mx-0">
-       
           <ListGroup as="ol"> {listItems} </ListGroup>
         </Row>
         <Row className="mx-0"> </Row>

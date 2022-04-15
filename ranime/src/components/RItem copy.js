@@ -7,7 +7,7 @@ import { FloatingLabel } from "react-bootstrap";
 
 function RItem({ task, remove, update }) {
   const [modif, setModif] = useState(task);
-  const [isEditing, setIsEditing] = useState(false); 
+  const [isEditing, setIsEditing] = useState(false);
 
   const handlDelItem = (e) => {
     /**
@@ -20,23 +20,10 @@ function RItem({ task, remove, update }) {
     setTimeout(function() {
       remove(e.target.id);
     }, 1000);
-  }
-
-  const handlCheckItem = (e) => {  
-    /**
-     * On ajoute la classe d'animation swing
-     */
-    e.target.checked ? e.target.closest("li").classList.add("barre") : e.target.closest("li").classList.remove("barre");
-    /**
-     * On retard la suppression de l'element le temps de l'animation
-     */
-    setTimeout(function() {
-      remove(e.target.id);
-    }, 1000);
   };
 
-  const changeView = () => { 
-    setIsEditing(!isEditing); 
+  const changeView = () => {
+    setIsEditing(!isEditing);
   };
 
   const handleUpdate = (e) => {
@@ -60,7 +47,6 @@ function RItem({ task, remove, update }) {
   };
 
   return (
-      
     <ListGroup.Item
       as="li"
       className="slide-in-elliptic-top-fwd d-flex justify-content-between align-items-start"
@@ -68,7 +54,7 @@ function RItem({ task, remove, update }) {
       <div className="ms-2 me-auto">
         <div className="fw-bold">
           {!isEditing ? (
-            <Form.Check type="switch" id="custom-switch" onChange={handlCheckItem} label={task} />
+            <Form.Check type="switch" id="custom-switch" label={task} />
           ) : (
             <Form onSubmit={handleUpdate}>
               <FloatingLabel
