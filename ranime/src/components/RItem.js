@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FloatingLabel } from "react-bootstrap"; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faTrashAlt, faRegEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
  
 
@@ -95,7 +95,7 @@ function RItem({ task, remove, update }) {
       </div>
       <>
         <hr/>
-        <Button variant="outline-primary" onClick={changeView} id={task}>Modifier <FontAwesomeIcon icon={faRegEdit} /></Button>
+        <Button variant="outline-primary" onClick={changeView} id={task}>Modifier <FontAwesomeIcon icon={faEdit} /></Button>
         <Button variant="outline-secondary" onClick={handlDelItem} id={task}>Supprimer<FontAwesomeIcon icon={faTrashAlt} /></Button>
       </>
        

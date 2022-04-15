@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 import App from './App';
 import RItem from './components/RItem';
 
-test('renders learn react link', () => {
+test('Afficher le titre de la todo list', () => {
   const { getByTestId } = render(<App />);
   const headerEl = getByTestId("titre");
   
@@ -38,3 +38,12 @@ test("Ajout de taches", () => {
   expect(todoList.children.length).toBe(3); 
 
 })
+
+
+/* test("Verifier l'existance de la classe css", () => {
+  const onSubmit = jest.fn();
+  const { getByTestId } = render(<App onSubmit={onSubmit} />);
+  const todoList = getByTestId('todosList');
+
+  expect(todoList).toHaveClass('slide-in-elliptic-top-fwd')
+}) */
