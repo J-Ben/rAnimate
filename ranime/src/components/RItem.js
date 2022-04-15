@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { ListGroup } from "react-bootstrap"; 
 import { Form } from "react-bootstrap"; 
 import { Button } from "react-bootstrap";
-import { FloatingLabel } from "react-bootstrap"; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
-import { faTrashAlt, faRegEdit } from '@fortawesome/free-solid-svg-icons'
+import { FloatingLabel } from "react-bootstrap";  
 
- 
+
 
 function RItem({ task, remove, update }) {
   const [modif, setModif] = useState(task);
@@ -95,8 +93,8 @@ function RItem({ task, remove, update }) {
       </div>
       <>
         <hr/>
-        <Button variant="outline-primary" onClick={changeView} id={task}>Modifier <FontAwesomeIcon icon={faRegEdit} /></Button>
-        <Button variant="outline-secondary" onClick={handlDelItem} id={task}>Supprimer<FontAwesomeIcon icon={faTrashAlt} /></Button>
+        <Button variant="outline-primary" onClick={changeView} id={task}>Modifier</Button>
+        <Button variant="outline-secondary" onClick={handlDelItem} id={task}>Supprimer</Button>
       </>
        
     </ListGroup.Item>
